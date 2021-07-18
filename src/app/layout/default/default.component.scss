@@ -1,0 +1,68 @@
+@import "~ng-devui/styles-var/devui-var.scss";
+
+d-header {
+  text-align: left;
+  position: relative;
+  height: 40px;
+  background-color: $devui-base-bg-dark;
+  color: $devui-light-text;
+
+  .logo {
+    position: absolute;
+    left: 0;
+    margin-left: 40px;
+    height: 40px;
+    width: 120px;
+    color: $devui-light-text;
+    font-size: $devui-font-size-icon;
+    line-height: 40px;
+
+    .btn-group > span {
+      font-size: $devui-font-size-icon;
+      color: $devui-text-weak;
+      cursor: pointer;
+      background-color: transparent;
+    }
+
+    .devui-dropdown-menu {
+      overflow-y: auto;
+    }
+
+    .btn-group {
+      display: inline-block;
+      height: 20px;
+    }
+
+    .icon-setup::before {
+      height: 20px;
+      display: block;
+    }
+  }
+}
+
+d-content {
+  padding: 0 40px;
+  height: calc(100vh - 40px);
+  background-color: $devui-global-bg;
+
+  d-breadcrumb {
+    margin: 8px 0;
+  }
+
+  .inner-content {
+    background-color: $devui-base-bg;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
+d-footer {
+  color: $devui-light-text;
+  background-color: $devui-base-bg-dark;
+  position: relative;
+  height: 30px;
+  width: 100%;
+  text-align: center;
+}
