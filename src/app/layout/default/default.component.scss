@@ -19,7 +19,7 @@ d-header {
 
     .btn-group > span {
       font-size: $devui-font-size-icon;
-      color: $devui-text-weak;
+      color: $devui-global-bg-normal;
       cursor: pointer;
       background-color: transparent;
     }
@@ -29,6 +29,7 @@ d-header {
     }
 
     .btn-group {
+      margin-top: -18px;
       display: inline-block;
       height: 20px;
     }

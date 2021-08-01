@@ -1,0 +1,14 @@
+<d-card class="card-container">
+    <d-card-header>
+      <d-card-title>计时器</d-card-title>
+    </d-card-header>
+    <d-card-content>
+        <d-progress  [percentage]="percentage" [percentageText]="percentageText" [barbgcolor]="'#50D4AB'" [strokeWidth]="8"> </d-progress>
+    </d-card-content>
+    <d-card-actions [align]="'start'">
+      <d-input-number [(ngModel)]="timeValue" class="input-number mr-element-spacing " [autoFocus]="true"></d-input-number>
+      <span class="mr-element-spacing" >分钟</span>
+      <d-button *ngIf="!intervalId" icon="icon-run" bsStyle="text-dark" (btnClick)="start()" class="mr-element-spacing"> Run </d-button>
+      <d-button *ngIf="!!intervalId" icon="icon-stop" bsStyle="text-dark"(btnClick)="stop()" class="mr-element-spacing"> Stop </d-button>
+    </d-card-actions>
+  </d-card>
