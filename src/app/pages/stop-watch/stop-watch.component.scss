@@ -53,3 +53,30 @@ d-card {
   color: $devui-success;
   font-size: $devui-font-size-data-overview;
 }
+
+devui-circle-loading-container-2 {
+  position: absolute;
+  right: -20px;
+  top: 0;
+}
+
+.devui-circle-loading {
+  animation: loadingCircle 1s linear infinite;
+}
+
+@keyframes loadingCircle {
+  0% {
+    stroke-dasharray: 1, 50;
+    stroke-dashoffset: 0;
+  }
+
+  60% {
+    stroke-dasharray: 30, 50;
+    stroke-dashoffset: -30;
+  }
+
+  100% {
+    stroke-dasharray: 1, 50;
+    stroke-dashoffset: -50;
+  }
+}
