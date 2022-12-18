@@ -1,0 +1,20 @@
+<div class="number-board">
+    <div >
+      <div class="number-box top upper-layer" 
+        [@flipDown]="stateDown ? 'start': 'end'"  
+        [@flipUp]="stateDownSecond ? 'start': 'end'" 
+        (click)="toggle()">
+        <div class="number">{{showNum}}</div>
+      </div>
+      <div class="number-box top">
+        [@flipDown]="stateDownSecond ? 'start': 'end'"  
+        <div class="number"  (click)="toggleSecond()">{{showNum}}</div>
+      </div>
+    </div>
+    <div class="number-line"></div>
+    <div class="number-box bottom" 
+      [@flipUp]="stateDown ? 'start': 'end'"  
+    >
+      <div class="number">{{showNum}}</div>
+    </div>
+</div>

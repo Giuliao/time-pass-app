@@ -1,0 +1,54 @@
+@import 'ng-devui/styles-var/devui-var.scss';
+
+@keyframes flip-to-bottom {
+    from {
+        transform: perspective(1000px) rotateX(0);
+    }
+    to {
+        transform: perspective(1000px) rotateX(-180deg) translateY(-0.5rem);
+    }
+}
+.flip-animate {
+    transform-origin: bottom center;
+    animation: flip-to-bottom 2s ease-in-out forwards;
+}
+
+.upper-layer {
+    z-index: 1;
+    position: absolute;
+}
+
+.number-box {
+    overflow: hidden; 
+    height: 16rem;
+    border: solid;
+    background-color: #282828;
+    border-radius: $devui-border-radius-card;
+    box-shadow: $devui-shadow-length-base black;
+
+    &.top {
+        line-height: 33rem;
+    }
+    &.bottom{
+        line-height: 0rem;
+    }
+}
+
+
+.number-board {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 32.5rem;
+    margin-right: 20px;
+}
+
+.number {
+    font-size: 33rem;
+    color: beige;
+}
+
+.number-line {
+    background-color: black;
+    height: 0.5rem
+}

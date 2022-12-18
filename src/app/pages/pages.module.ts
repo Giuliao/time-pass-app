@@ -10,16 +10,20 @@ import { CardModule } from 'ng-devui/card';
 import { InputNumberModule } from 'ng-devui';
 import { ButtonModule } from 'ng-devui/button';
 import { LoadingModule } from 'ng-devui/loading';
+import { SharedModule } from '../shared/shared.module';
 
 import { TimeProgressComponent } from './time-progress/time-progress.component';
 import { StopWatchComponent } from './stop-watch/stop-watch.component';
+import { FlipClockComponent } from './flip-clock/flip-clock.component';
 
 @NgModule({
   declarations: [
     TimeProgressComponent,
-    StopWatchComponent
+    StopWatchComponent,
+    FlipClockComponent
   ],
   imports: [
+    SharedModule,
     CommonModule,
     FormsModule,
     PagesRoutingModule,
