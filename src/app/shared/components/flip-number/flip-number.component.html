@@ -1,20 +1,24 @@
 <div class="number-board">
-    <div >
-      <div class="number-box top upper-layer" 
-        [@flipDown]="stateDown ? 'start': 'end'"  
-        [@flipUp]="stateDownSecond ? 'start': 'end'" 
+    <div class="number-box-wrap">
+   
+      <div class="number-box top upper-layer"
+        [ngClass]="state==='end'? 'upper-layer': 'second-layer'"
+        [@flipDown]="state"  
         (click)="toggle()">
-        <div class="number">{{showNum}}</div>
+        <div class="number" [ngClass]="{'transform-vertical': state === 'end'}">{{topHalfTopNum}}</div>
       </div>
-      <div class="number-box top">
-        [@flipDown]="stateDownSecond ? 'start': 'end'"  
-        <div class="number"  (click)="toggleSecond()">{{showNum}}</div>
+   
+      <div class="number-box top" 
+        [ngClass]="stateSecond==='end'? 'upper-layer': 'second-layer'"
+        [@flipDown]="stateSecond" 
+        (click)="toggleSecond()">
+        <div class="number" [ngClass]="{'transform-vertical': stateSecond === 'end'}">{{topHalfBottomNum}}</div>
       </div>
     </div>
+
     <div class="number-line"></div>
-    <div class="number-box bottom" 
-      [@flipUp]="stateDown ? 'start': 'end'"  
-    >
-      <div class="number">{{showNum}}</div>
+
+    <div class="number-box bottom">
+      <div class="number">{{bottomNum}}</div>
     </div>
 </div>

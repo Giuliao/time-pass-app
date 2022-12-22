@@ -1,11 +1,10 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 import {
   trigger,
   state,
   style,
   animate,
   transition
-  // ...
 } from '@angular/animations';
 
 @Component({
@@ -17,58 +16,97 @@ import {
   },
   animations: [
     trigger('flipDown', [
-      state('start', style({
-        'transform-origin': "bottom",
-        'z-index': '1',
-        transform: "perspective(1000px)",
-      })),
-      state('end', style({
-        'transform-origin': "bottom",
-        transform: "perspective(1000px) rotateX(-180deg) translateY(-0.5rem)",
-      })),
-      transition('start => end', [
-        animate('2s ease-in-out')
-      ]),
-    ]),
-    trigger('flipUp', [
-      state('start', style({
-        'transform-origin': "top",
-        transform: "perspective(1000px)",
-      })),
-      state('end', style({
-        'transform-origin': "top",
-        "z-index": '-1',
-        transform: "perspective(1000px) rotateX(-180deg) translateY(0.5rem)",
-      })),
-      transition('start => end', [
-        animate('1s 2s')
-      ]),
+      state(
+        'start',
+        style({
+          'transform-origin': 'bottom',
+          transform: 'perspective(1000px)',
+        })
+      ),
+      state(
+        'end',
+        style({
+          'transform-origin': 'bottom',
+          transform: 'perspective(1000px) rotateX(-180deg) translateY(-0.5rem)',
+        })
+      ),
+      transition('start => end', [animate('2s ease-in-out', )]),
     ])
-  ]
+  ],
 })
-export class FlipNumberComponent implements OnInit {
-  @Input() public showNum : number =1
-  constructor() { }
+export class FlipNumberComponent implements OnInit, OnChanges {
+  @Input() public showNum: number = 0;
+  @Input() public timeout: number = 2000;
+  public bottomNum: number = 0;
+  public topHalfTopNum: number = 0;
+  public topHalfBottomNum: number = 0
+  private topHalfTopNumHandle: any;
+  private bottomNumHandle:any;
+  private topHalfBottomNumHandle:any;
+  constructor() {}
 
-  ngOnInit(): void {
-  }
-  public stateUp = true;
-  public stateDown = true;
-  public toggle(): void {
-    this.stateDown = !this.stateDown
-  }
-
-
-  public stateUpSecond = true;
-  public stateDownSecond = true;
-  public toggleSecond(): void {
-    this.stateDown = !this.stateDown;
+  ngOnChanges(changes: SimpleChanges): void {
    
-  } 
+    if(changes.showNum.isFirstChange()) {
+      this.topHalfTopNum = this.showNum;
+      this.bottomNum = this.showNum;
+      this.topHalfBottomNum = this.showNum;
+      return;
+    }
 
-  public onAnimationStart(event: any) {
-    console.log("start");
-    console.log(event);
+   this.clearSetTimeout();
+
+    this.bottomNumHandle = setTimeout(()=>{
+      this.bottomNum = this.showNum;
+    }, this.timeout)
+
+    if (this.state === 'start') {
+      this.setFirstState();
+      this.toggle();
+    } else {
+     
+      this.setSecondState();
+      this.toggleSecond();
+    }
+  }
+
+  ngOnInit(): void {}
+
+  ngOnDestroy(): void {
+    this.clearSetTimeout();
+  }
+
+  public state = 'start';
+  public toggle(): void {
+    this.state = 'end';
+    this.stateSecond = 'start';
+  }
+
+  public setFirstState(): void {
+    this.topHalfTopNumHandle = setTimeout(()=>{
+      this.topHalfTopNum = this.showNum;
+    }, this.timeout/2)
+    this.topHalfBottomNum = this.showNum;
+  }
+
+
+  public stateSecond = 'start';
+  public toggleSecond(): void {
+    this.state = 'start';
+    this.stateSecond = 'end';
+  }
+
+  public setSecondState(): void {
+    this.topHalfBottomNumHandle =  setTimeout(()=>{
+      this.topHalfBottomNum = this.showNum;
+    }, this.timeout/2)
+    this.topHalfTopNum = this.showNum;
+  }
+
+  public clearSetTimeout(): void {
+    clearTimeout(this.topHalfBottomNumHandle);
+    clearTimeout(this.bottomNumHandle);
+    clearTimeout(this.topHalfTopNumHandle);
   }
 
 }
