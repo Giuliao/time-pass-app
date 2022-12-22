@@ -4,6 +4,7 @@ import { LayoutModule as DevUILayoutModule } from 'ng-devui';
 import { DefaultComponent } from './default/default.component';
 import { LayoutRoutingModule } from './layout-routing.module';
 import { DropDownModule } from 'ng-devui/dropdown';
+import { CoreModule } from '../core/core.module'
 
 
 
@@ -15,7 +16,8 @@ import { DropDownModule } from 'ng-devui/dropdown';
     CommonModule,
     DevUILayoutModule,
     LayoutRoutingModule,
-    DropDownModule
+    DropDownModule,
+    CoreModule
   ]
 })
 export class LayoutModule { }

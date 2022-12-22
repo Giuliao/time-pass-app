@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { BaseService } from '../../core/base.service'
 
 @Component({
   selector: 'app-default',
@@ -8,15 +9,17 @@ import { Component, OnInit } from '@angular/core';
 export class DefaultComponent {
   public menuItem = [
     {
-      route: '/',
+      route: `${this.baseService.publicBaseHref}`,
       text: 'time pass', 
     },
     {
-      route: '/flip-clock',
+      route: `${this.baseService.publicBaseHref}/flip-clock`,
       text: 'flip clock', 
     }
   ]
-  constructor() { }
+  constructor(
+    private baseService: BaseService
+  ) { }
 
   public onToggle(event: any): void {
   }
