@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 
 @Component({
   selector: 'app-flip-clock',
   templateUrl: './flip-clock.component.html',
   styleUrls: ['./flip-clock.component.scss']
 })
-export class FlipClockComponent implements OnInit {
+export class FlipClockComponent implements OnInit, OnDestroy {
 
   constructor() { }
 

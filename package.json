@@ -2,11 +2,14 @@
   "name": "time-pass-app",
   "version": "0.0.0",
   "scripts": {
-    "ng": "ng",
+    "ng": "npx ng",
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "lint": "ng lint",
+    "prepare": "husky install",
+    "deploy": "ng deploy --base-href=/time-pass-app/"
   },
   "private": true,
   "dependencies": {
@@ -26,11 +29,20 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^14.2.10",
+    "@angular-eslint/builder": "14.4.0",
+    "@angular-eslint/eslint-plugin": "14.4.0",
+    "@angular-eslint/eslint-plugin-template": "14.4.0",
+    "@angular-eslint/schematics": "14.4.0",
+    "@angular-eslint/template-parser": "14.4.0",
     "@angular/cli": "^14.2.10",
     "@angular/compiler-cli": "^14.2.12",
     "@types/jasmine": "~3.8.0",
     "@types/node": "^12.11.1",
+    "@typescript-eslint/eslint-plugin": "5.43.0",
+    "@typescript-eslint/parser": "5.43.0",
     "angular-cli-ghpages": "^1.0.0-rc.2",
+    "eslint": "^8.28.0",
+    "husky": "^8.0.2",
     "jasmine-core": "~3.8.0",
     "karma": "~6.3.0",
     "karma-chrome-launcher": "~3.1.0",

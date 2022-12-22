@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges, OnDestroy } from '@angular/core';
 import {
   trigger,
   state,
@@ -11,9 +11,6 @@ import {
   selector: 'app-flip-number',
   templateUrl: './flip-number.component.html',
   styleUrls: ['./flip-number.component.scss'],
-  host: {
-    '(@flipDown.start)': 'captureStartEvent($event)',
-  },
   animations: [
     trigger('flipDown', [
       state(
@@ -34,7 +31,7 @@ import {
     ])
   ],
 })
-export class FlipNumberComponent implements OnInit, OnChanges {
+export class FlipNumberComponent implements OnChanges, OnDestroy {
   @Input() public showNum: number = 0;
   @Input() public timeout: number = 2000;
   public bottomNum: number = 0;
@@ -69,8 +66,6 @@ export class FlipNumberComponent implements OnInit, OnChanges {
       this.toggleSecond();
     }
   }
-
-  ngOnInit(): void {}
 
   ngOnDestroy(): void {
     this.clearSetTimeout();
